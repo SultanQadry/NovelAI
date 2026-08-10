@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+
+# Environment variables / secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Test/cache files
+.pytest_cache/
+
+# Private novel data
+data/raw/
+
+# Generated output
+output.txt
+
+# VS Code
+.vscode/
