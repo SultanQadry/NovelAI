@@ -174,6 +174,17 @@ class Generator:
                 messages=messages,
             )
             return response.content[0].text
+            
+        if provider == "gemini":
+            chat = self._client.chats.create(model=self.config.model)
+            full_query = f"SYSTEM INSTRUCTIONS:\n{system_prompt}\n\n"
+            if history:
+                for msg in history:
+                    full_query += f"{msg['role'].upper()}: {msg['content']}\n\n"
+            full_query += f"USER: {query}"
+            
+            response = chat.send_message(full_query)
+            return response.text
 
         # openai + local both use the chat.completions schema
         response = self._client.chat.completions.create(
@@ -210,6 +221,20 @@ class Generator:
                     yield text
             return
 
+        if provider == "gemini":
+            chat = self._client.chats.create(model=self.config.model)
+            full_query = f"SYSTEM INSTRUCTIONS:\n{system_prompt}\n\n"
+            if history:
+                for msg in history:
+                    full_query += f"{msg['role'].upper()}: {msg['content']}\n\n"
+            full_query += f"USER: {query}"
+            
+            stream = chat.send_message_stream(full_query)
+            for chunk in stream:
+                if chunk.text:
+                    yield chunk.text
+            return
+            
         stream = self._client.chat.completions.create(
             model=self.config.model,
             temperature=self.config.temperature,

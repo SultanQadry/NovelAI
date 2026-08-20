@@ -1,0 +1,19 @@
+# Core Data Science & ML
+torch>=2.0.0
+numpy>=1.24.0
+
+# LLM Providers
+google-genai>=0.1.0        # New Google Gemini SDK
+anthropic>=0.30.0          # Anthropic Claude SDK
+openai>=1.30.0             # OpenAI SDK
+python-dotenv>=1.0.0
+
+# RAG / Vector Database
+chromadb>=0.5.0            # Vector Database
+sentence-transformers>=3.0.0 # Embedding models and Cross-Encoders
+
+# Ingestion / Document Parsers
+python-docx>=1.0.0         # For reading Word documents
+
+# Frontend
+streamlit>=1.35.0          # Beautiful Chat UI
