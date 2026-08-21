@@ -32,6 +32,30 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
+**If PowerShell blocks the activation script**
+
+If you see an error saying that script execution is disabled, run:
+
+```bash
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Then activate the environment again:
+
+```bash
+.\.venv\Scripts\Activate.ps1
+```
+
+This changes the execution policy only for the current PowerShell session. It does not permanently change your Windows security settings.
+
+Then continue with:
+
+**On Mac/Linux:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
 #### Install dependencies:
 Once your environment is active, install everything you need:
 
